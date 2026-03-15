@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Owllyug</title>
+	<link rel="stylesheet" href="https://unpkg.com/XP.css"/>
+	<style>body{background: #ece9d8}body{font-size:16px;}</style>
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+</head>
+<body>
+<center>
+	<h2>Owllyug 主页</h2>
+	这是我的个人网站，主站<a href="https://hellopgrmm.github.io/">点此访问</a>
+</center>
+	<div class="window" style="margin-top: 50px;width:70%;margin-left:15%;">
+		<div class="title-bar">
+			<div class="title-bar-text">Owllyug</div>
+			<div class="title-bar-controls">
+				<button aria-label="Close"></button>
+			</div>
+		</div>
+		<div class="window-body">
+			<section class="tabs">
+  			<menu role="tablist">
+    			<button role="tab" id="sect1-no1-tab" onclick="chsection(1,1,3)" aria-selected="true" aria-controls="tab-A">主页</button>
+    			<button role="tab" id="sect1-no2-tab" onclick="chsection(1,2,3)" aria-controls="tab-B">工具</button>
+    			<button role="tab" id="sect1-no3-tab" onclick="chsection(1,3,3)" aria-controls="tab-C">杂项</button>
+  			</menu>
+  			<article role="tabpanel" id="sect1-no1">
+  				你好，我是一个14岁的初中生，写网页和编程是业余爱好，擅长Web开发、Python、C。
+  				<br>
+  				我自2022开始学习HTML/CSS/JS网页开发，个人比较喜欢做一些网页版的模拟器（如伪系统）、网页工具、文档/教程之类的。
+  				<br>
+  				目前我有两个网站，一个是<a href="https://hellopgrmm.github.io/">Hello Programming</a>，多多少少有点官网的样子。一个是你目前访问的这个网站，所以这就是我的个人网站了，以后会把一些文章放到这里来的。
+  				<br>
+  				之前做过一些中等项目，以伪系统为主，一个是KunOS，另外一个是Vek。
+  				<br>
+  				KunOS是2024年初做的，很久之前的作品了；Vek是2025年8月底做的可以看看。
+  				<br>
+  				<button onclick="webview('https://hellopgrmm.github.io/simul/KunOS_new')">启动KunOS</button>
+  				<button onclick="webview('https://hellopgrmm.github.io/simul/Vek')">启动Vek</button>
+  			</article>
+    		<article role="tabpanel" hidden id="sect1-no2">
+    			<h3>工具</h3>
+    			有些工具会跳转到我的主站，之后也会补充。<br>
+    			<button onclick="webview('https://hellopgrmm.github.io/tools/htmlcm.html')">高级HTML编辑器</button>
+    			<button onclick="webview('https://hellopgrmm.github.io/tools/textm.html')">LRC转JS活动字幕</button>
+				<button onclick="webview('https://hellopgrmm.github.io/tools/fontCh.html')">花体英文转换</button>
+				<button onclick="webview('https://hellopgrmm.github.io/tools/JSFUCKDECODE.html')">JSFuck</button>
+				<button onclick="webview('highlight.html')">HLJS免js高亮</button>
+  			</article>
+   			<article role="tabpanel" hidden id="sect1-no3">
+   				3
+  			</article>
+  			</section>
+		</div>
+	</div>
+<div id='webviewwin' class='window' style='overflow: auto;width:50%;height:50%;position:fixed;z-index:9178;left:25%;top:25%;display:none;'>
+<div class='title-bar'><div class='title-bar-text'>网页浏览</div><div class="title-bar-controls"><button aria-label="Close" onclick='webviewwin.style.display = "none";'></button></div></div><div class='window-body'><iframe src="" style='width:98%;height: 400px;' id='dela'></iframe></div></div>
+</div>
+<script>
+function webview(url)
+{
+	webviewwin.style.display = "";
+	dela.src = url;
+}
+function chsection(sign,sectionn,total)
+{
+    //给xpcss和98css设计的选项卡切换函数，选项卡项目的id格式为sect<编号>-no<内容序号>-tab，内容格式去掉-tab后缀。例如：sect1-no1-tab、sect5-no2，内容的<编号>必须和选项卡的<编号>一样，<编号>指的是整个选项卡的编号，比如1号选项卡就用sect1。（当然，这也是可以通用的）
+    for(var secthid = 1;secthid <=total;secthid++)
+    {
+        document.getElementById(`sect${sign}-no${secthid}`).setAttribute("hidden",true)
+    }
+    document.getElementById(`sect${sign}-no${sectionn}`).removeAttribute("hidden");
+    for(secthid = 1;secthid <=total;secthid++)
+    {
+        document.getElementById(`sect${sign}-no${secthid}-tab`).setAttribute("aria-selected",false);
+    }
+    document.getElementById(`sect${sign}-no${sectionn}-tab`).setAttribute("aria-selected",true);
+}
+$("#webviewwin").draggable();
+$("#webviewwin").resizable();
+</script>
+</body>
+</html>
