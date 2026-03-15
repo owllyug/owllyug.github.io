@@ -1,0 +1,20 @@
+<meta charset='utf-8'>
+<title>HighlightJS免js高亮工具</title>
+<link rel="stylesheet" href="https://unpkg.com/@highlightjs/cdn-assets@11.11.1/styles/harmonic16-dark.min.css">
+<script src="https://unpkg.com/@highlightjs/cdn-assets@11.11.1/highlight.min.js"></script>
+<script src="https://unpkg.com/@highlightjs/cdn-assets@11.11.1/languages/html.min.js"></script>
+<script src="https://unpkg.com/@highlightjs/cdn-assets@11.11.1/languages/c.min.js"></script>
+<link rel='stylesheet' href='XP.css'/><!--webpage with windows xp retro style-->
+<style>body{background:#ece9d8}</style><body>
+<h3>HighlightJS免JS高亮工具</h3>
+HighlightJS是一款备受欢迎的代码高亮工具，高亮效果好，然而hljs要搭配至少三种cdn（编程语言支持、hljs本体、主题库）才能正常使用，这可能会拖慢网页加载时间。这是一个免去语言支持、hljs本体就能用的高亮工具，适用于个人网站搭建。<br><br>
+使用方法：<br><blockquote>在下方输入代码或者粘贴代码（最好是粘贴，直接输入可能无法高亮），代码将会在下方高亮显示出来，这时候点击“高亮处理”就会出现高亮处理后的html代码。此时复制这段代码，粘贴到自己的网页上，那么，您只需要引入一个HLJS的主题CSS库，就能实现HLJS的效果。完全免去了highlight.min.js和xxx.min.js的加载，缩短网页加载时间。</blockquote><br>
+<strong>同时支持HTML/CSS/JS和C</strong><br>
+<textarea style='width:98%;height:100px;' id='originalc' placeholder='请在此粘贴/输入您的代码。' oninput='dest.innerHTML = originalc.value;hljs.highlightBlock(hpp);'></textarea>
+<button onclick='try{ahljs.value = "<pre><code>"+hpp.innerHTML+"</code></pre>";reswin.style.display = "";}catch(e){alert(e);}'>高亮处理</button>
+<pre id='hpp'>
+<xmp id='dest'></xmp>
+</pre>
+<div id='reswin' class='window' style='width:50%;position:fixed;z-index:9178;left:30%;top:20%;display:none;'>
+<div class='title-bar'><div class='title-bar-text'>高亮结果(复制以下代码)</div><div class="title-bar-controls"><button aria-label="Close" onclick='reswin.style.display = "none";'></button></div></div><div class='window-body'><textarea style='width:98%;height:200px' id='ahljs'></textarea></div></div>
+</div>
